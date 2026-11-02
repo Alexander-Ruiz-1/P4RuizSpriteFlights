@@ -187,7 +187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Obstacle
   maxSpinSpeed: 20
-  minSize: 1.5
-  maxSize: 2.5
-  minSpeed: 900
-  maxSpeed: 1000
+  minSize: 1
+  maxSize: 2
+  minSpeed: 500
+  maxSpeed: 600
