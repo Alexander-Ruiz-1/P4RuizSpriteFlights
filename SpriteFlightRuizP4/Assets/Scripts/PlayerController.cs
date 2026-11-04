@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     public float thrustForce = 1f;
     public float maxSpeed = 5f;
     public GameObject boosterFlame;
-    public GameObject innerboosterFlame;
+    
         Rigidbody2D rb;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -29,13 +29,7 @@ public class PlayerController : MonoBehaviour
         }
         if (Mouse.current.leftButton.isPressed)
         {
-            if (Mouse.current.leftButton.wasPressedThisFrame)
-            {
-                innerboosterFlame.SetActive(true);
-            }
-            else if (Mouse.current.leftButton.wasReleasedThisFrame)
-            {
-                innerboosterFlame.SetActive(false);
+            
             }
             //Calculate Mouse Direction
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.value);
@@ -53,6 +47,6 @@ public class PlayerController : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D collosion)
     {
-        Destroy(gameObject);
+    Destroy(GameObject);
     }
 }
