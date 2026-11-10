@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Obstacle : MonoBehaviour
 {
@@ -7,8 +8,11 @@ public class Obstacle : MonoBehaviour
     public float maxSize = 2.0f;
     public float minSpeed = 50f;
     public float maxSpeed = 150f;
+    public GameObject bounceEffectPrefab;
+    public GameObject explosionEffect;
+    public VisualElement restartButton;
     Rigidbody2D rb;
-    
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -27,5 +31,19 @@ public class Obstacle : MonoBehaviour
     void Update()
     {
 
+    }
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        Vector2 contactPoint = collision.GetContact(0).point;
+        GameObject bounceEffect = Instantiate(bounceEffectPrefab, contactPoint, Quaternion.identity);
+        // Destroy the effect after 1 second
+        Destroy(bounceEffect, 1f);
+
+
+
+
+        Destroy(gameObject);
+        Instantiate(explosionEffect, transform.position, transform.rotation);
+        restartButton.style.display = DisplayStyle.Flex;
     }
 }
