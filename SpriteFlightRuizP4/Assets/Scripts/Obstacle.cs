@@ -36,14 +36,14 @@ public class Obstacle : MonoBehaviour
     {
         Vector2 contactPoint = collision.GetContact(0).point;
         GameObject bounceEffect = Instantiate(bounceEffectPrefab, contactPoint, Quaternion.identity);
+
         // Destroy the effect after 1 second
         Destroy(bounceEffect, 1f);
+    
 
 
 
 
-        Destroy(gameObject);
-        Instantiate(explosionEffect, transform.position, transform.rotation);
-        restartButton.style.display = DisplayStyle.Flex;
+        
     }
 }
