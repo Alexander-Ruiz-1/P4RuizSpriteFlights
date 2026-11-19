@@ -16,7 +16,8 @@ public class PlayerController : MonoBehaviour
     private Label scoreText;
     private Button restartButton;
     public GameObject explosionEffect;
-    
+    public GameObject BordersParent;
+
 
 
     Rigidbody2D rb;
@@ -40,18 +41,7 @@ public class PlayerController : MonoBehaviour
        elapsedTime += Time.deltaTime;
         score = Mathf.FloorToInt(elapsedTime * scoreMultiplier);
 
-        if (scoreText != null)
-        {
-            scoreText.text = "Score: " + score;
-        }
-        if (Mouse.current.leftButton.wasPressedThisFrame)
-        {
-            boosterFlame.SetActive(true);
-        }
-        else if (Mouse.current.leftButton.wasReleasedThisFrame)
-        {
-            boosterFlame.SetActive(false);
-        }
+        
         if (Mouse.current.leftButton.isPressed)
         {
             // Calculate mouse direction
@@ -69,9 +59,12 @@ public class PlayerController : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
+        
         Destroy(gameObject);
         Instantiate(explosionEffect, transform.position, transform.rotation);
+        BordersParent.SetActive(false);
         restartButton.style.display = DisplayStyle.Flex;
+        
     }
 
     void ReloadScene()
